@@ -20,16 +20,18 @@
 
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-
-// import RootStackScreen from './Components/RootStackScreen';
+import { SafeAreaView, SafeAreaProvider } from 'react-native-safe-area-context'
 import MainTabScreen from './screens/MainTabScreen';
 
-const App = () =>{
-  return(
-    <NavigationContainer>
-      {/* <RootStackScreen /> */}
-      <MainTabScreen/>
-    </NavigationContainer>
+const App = () => {
+  return (
+    <SafeAreaProvider>
+      <SafeAreaView>
+        <NavigationContainer>
+          <MainTabScreen />
+        </NavigationContainer>
+      </SafeAreaView>
+    </SafeAreaProvider>
   );
 }
 

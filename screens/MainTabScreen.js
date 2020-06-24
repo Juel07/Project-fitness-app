@@ -99,7 +99,7 @@ const LandingStackScreen = () => (
         })}
     >
         <LandingStack.Screen name="Workouts" component={LandingScreen} />
-        <LandingStack.Screen name="Full Body Workout" component={WorkoutScreen} />
+        <LandingStack.Screen name="Full Body Workout 1" component={WorkoutScreen} />
         <LandingStack.Screen name="Bench Press" component={ExerciseScreen} />
     </LandingStack.Navigator>
 )

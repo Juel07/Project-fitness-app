@@ -25,13 +25,9 @@ import MainTabScreen from './screens/MainTabScreen';
 
 const App = () => {
   return (
-    <SafeAreaProvider>
-      <SafeAreaView>
         <NavigationContainer>
           <MainTabScreen />
         </NavigationContainer>
-      </SafeAreaView>
-    </SafeAreaProvider>
   );
 }
 

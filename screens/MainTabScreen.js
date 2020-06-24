@@ -80,6 +80,7 @@ const config = {
 const LandingStackScreen = () => (
     <LandingStack.Navigator
         screenOptions={{
+            headerBackTitleVisible: false,
             headerStyle: {
                 backgroundColor: '#2C1966',
                 },
@@ -88,7 +89,6 @@ const LandingStackScreen = () => (
                 fontWeight: 'Regular'
                 },
             headerTitleAlign: 'center',
-            headerBackTitleVisible: 'false',
             gestureEnabled: true, gestureDirection: 'horizontal',
             transitionSpec: { open: config, close: config },
             cardStyleInterpolator:
@@ -99,7 +99,7 @@ const LandingStackScreen = () => (
         })}
     >
         <LandingStack.Screen name="Workouts" component={LandingScreen} />
-        <LandingStack.Screen name="Full Body Workout 1" component={WorkoutScreen} />
+        <LandingStack.Screen name="Full Body Workout" component={WorkoutScreen} />
         <LandingStack.Screen name="Bench Press" component={ExerciseScreen} />
     </LandingStack.Navigator>
 )

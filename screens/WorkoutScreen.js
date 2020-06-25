@@ -4,6 +4,7 @@ import { ProgressChart } from 'react-native-chart-kit';
 import ProgressCircle from 'react-native-progress-circle'
 
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import CustomButton from '../components/greenButton';
 
 import { useFonts } from '@use-expo/font';
 import { AppLoading } from 'expo';
@@ -29,7 +30,7 @@ export default function Workout({ navigation }) {
             </View>
             <View style={styles.whiteBlock}>
               <View style={styles.chartContainer}>
-                {/* <ProgressChart data={data} width={200} height={200} strokeWidth={16} radius={32}
+                {/* <ProgressChart data={data} width={200} height={200} strokeWidth={16} radius={32} hideLegend={false}
               />  */}
                 <ProgressCircle
                   percent={25}
@@ -38,7 +39,6 @@ export default function Workout({ navigation }) {
                   color="#6699ff"
                   bgColor="#fff"
                   shadowColor='#dadada'
-                  sty
                 >
                   <Text style={{ fontSize: 15 }}>{'25%'}</Text>
                 </ProgressCircle>
@@ -63,7 +63,7 @@ export default function Workout({ navigation }) {
               </View>
 
               <View style={styles.buttonContainer}>
-
+              <CustomButton text="Complete Workout"></CustomButton>
               </View>
             </View>
           </View>
@@ -130,8 +130,11 @@ export default function Workout({ navigation }) {
 }
 
 const data = {
-  data: [0.7, 0.4, 0.8]
-}
+  labels: ["Swim", "Bike", "Run"], // optional
+  data: [0.4, 0.6, 0.8]
+};
+
+
 
 
 const styles = StyleSheet.create({
@@ -148,7 +151,7 @@ const styles = StyleSheet.create({
   whiteBlock: {
     backgroundColor: '#fff',
     // height: 200,
-    // width: 280,
+    width: '90%',
     borderRadius: 20,
     shadowColor: "#929292",
     shadowOffset: {
@@ -167,7 +170,8 @@ const styles = StyleSheet.create({
   chartContainer: {
     flex: 2,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    paddingVertical: 20
   },
   infoContainer: {
     flex: 1,
@@ -188,6 +192,9 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 20
   },
   infoText: {
     textAlign: 'center',
@@ -199,7 +206,7 @@ const styles = StyleSheet.create({
     zIndex: -1,
     flex: 2,
     marginTop: -55,
-    paddingTop: 55 + 90,
+    paddingTop: 55 + 115,
   },
   bottomText: {
     color: 'black',

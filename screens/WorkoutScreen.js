@@ -35,7 +35,7 @@ export default function Workout({ navigation }) {
                 <ProgressCircle
                   percent={25}
                   radius={50}
-                  borderWidth={10}
+                  borderWidth={18}
                   color="#6699ff"
                   bgColor="#fff"
                   shadowColor='#dadada'
@@ -74,7 +74,7 @@ export default function Workout({ navigation }) {
             <View style={styles.exerciseList}>
               <TouchableOpacity
                 style={styles.rect}
-                activeOpacity={0.6}
+                activeOpacity={0.7}
                 onPress={() => navigation.navigate("Bench Press")} >
                 <View style={styles.inner} >
                   <View style={styles.text} >
@@ -263,7 +263,8 @@ const styles = StyleSheet.create({
     fontFamily: 'Medium',
     textTransform: 'uppercase',
     color: '#2C1966',
-    letterSpacing: 0.5
+    letterSpacing: 0.5,
+    paddingVertical: 10
   },
 
   illustration: {

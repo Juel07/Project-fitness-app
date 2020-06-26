@@ -1,14 +1,14 @@
 import React from 'react';
 import { StyleSheet, Text, View, ScrollView } from 'react-native';
-import { ProgressChart } from 'react-native-chart-kit';
+import TouchableScale from 'react-native-touchable-scale';
 import ProgressCircle from 'react-native-progress-circle'
 
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import Symbol from 'react-native-vector-icons/AntDesign';
 import CustomButton from '../components/greenButton';
 
 import { useFonts } from '@use-expo/font';
 import { AppLoading } from 'expo';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 
 export default function Workout({ navigation }) {
   let [fontsLoaded] = useFonts({
@@ -63,7 +63,7 @@ export default function Workout({ navigation }) {
               </View>
 
               <View style={styles.buttonContainer}>
-              <CustomButton text="Complete Workout"></CustomButton>
+                <CustomButton text="Complete Workout"></CustomButton>
               </View>
             </View>
           </View>
@@ -72,54 +72,78 @@ export default function Workout({ navigation }) {
               <Text style={styles.bottomText}>Exercise Breakdown</Text>
             </View>
             <View style={styles.exerciseList}>
-              <TouchableOpacity
+              <TouchableScale
+                activeScale={0.95}
+                friction={90}
+                tension={100}
                 style={styles.rect}
-                activeOpacity={0.7}
                 onPress={() => navigation.navigate("Bench Press")} >
                 <View style={styles.inner} >
                   <View style={styles.text} >
                     <Text style={styles.mainText}>Bench Press</Text>
                   </View>
-                  <Icon name="chevron-right" style={styles.illustration} size={25}
-                  />
+                  <View style={styles.illustration}>
+                    <Symbol name="checkcircle" size={25} color="#00EEAA"
+                    />
+                    <Icon name="chevron-right" style={styles.chevron} size={25}
+                    />
+                  </View>
                 </View>
-              </TouchableOpacity>
-              <TouchableOpacity
+              </TouchableScale>
+              <TouchableScale
+                activeScale={0.95}
+                friction={90}
+                tension={100}
                 style={styles.rect}
-                activeOpacity={0.6}
               >
                 <View style={styles.inner} >
                   <View style={styles.text} >
                     <Text style={styles.mainText}>Planks</Text>
                   </View>
-                  <Icon name="chevron-right" style={styles.illustration} size={25}
-                  />
+                  <View style={styles.illustration}>
+                    <Symbol name="closecircle" size={25} color="red"
+                    />
+                    <Icon name="chevron-right" style={styles.chevron} size={25}
+                    />
+                  </View>
                 </View>
-              </TouchableOpacity>
-              <TouchableOpacity
+              </TouchableScale>
+              <TouchableScale
+                activeScale={0.95}
+                friction={90}
+                tension={100}
                 style={styles.rect}
-                activeOpacity={0.6}
               >
                 <View style={styles.inner} >
                   <View style={styles.text} >
                     <Text style={styles.mainText}>Squats</Text>
                   </View>
-                  <Icon name="chevron-right" style={styles.illustration} size={25}
-                  />
+                  <View style={styles.illustration}>
+                    <Symbol name="closecircle" size={25} color="red"
+                    />
+                    <Icon name="chevron-right" style={styles.chevron} size={25}
+                    />
+                  </View>
                 </View>
-              </TouchableOpacity>
-              <TouchableOpacity
+              </TouchableScale>
+              <TouchableScale
+                activeScale={0.95}
+                friction={90}
+                tension={100}
                 style={styles.rect}
-                activeOpacity={0.6}
               >
                 <View style={styles.inner} >
                   <View style={styles.text} >
                     <Text style={styles.mainText}>Pull Ups</Text>
                   </View>
-                  <Icon name="chevron-right" style={styles.illustration} size={25}
-                  />
+                  <View style={styles.illustration}>
+                    <Symbol name="closecircle" size={25} color="red"
+                    />
+                    <Icon name="chevron-right" style={styles.chevron} size={25}
+                    />
+                  </View>
                 </View>
-              </TouchableOpacity>
+              </TouchableScale>
             </View>
           </View>
         </ScrollView>
@@ -147,10 +171,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#2C1966',
     flex: 1,
     flexDirection: 'column',
+    paddingBottom: 10
   },
   whiteBlock: {
     backgroundColor: '#fff',
-    // height: 200,
     width: '90%',
     borderRadius: 20,
     shadowColor: "#929292",
@@ -161,8 +185,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 10,
     zIndex: 1,
-    // paddingTop: 30,
-    // paddingBottom: 30,
     alignSelf: 'center',
     justifyContent: 'center',
     flexDirection: 'column',
@@ -205,14 +227,15 @@ const styles = StyleSheet.create({
     backgroundColor: '#F8F8F8',
     zIndex: -1,
     flex: 2,
-    marginTop: -55,
-    paddingTop: 55 + 115,
+    // marginTop: -55,
+    // paddingTop: 55 + 115,
   },
   bottomText: {
     color: 'black',
     fontFamily: 'Medium',
     letterSpacing: 1,
-    textAlign: 'left'
+    textAlign: 'left',
+    paddingTop: 10
   },
 
   exerciseList: {
@@ -233,7 +256,7 @@ const styles = StyleSheet.create({
   },
 
   rect: {
-    Padding: 10,
+    padding: 10,
     margin: 5
   },
 
@@ -268,7 +291,13 @@ const styles = StyleSheet.create({
   },
 
   illustration: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-around'
+  },
+
+  chevron: {
     color: '#2C1966',
-  }
+  },
 
 });

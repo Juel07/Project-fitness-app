@@ -18,7 +18,7 @@ export default function CustomButton({ text, onPress }) {
     } else {
 
         return (
-            <TouchableOpacity onPress={onPress}>
+            <TouchableOpacity onPress={onPress} activeOpacity={0.7}>
                 <View style={styles.button}>
                     <Text style={styles.buttonText}>{text}</Text>
                 </View>

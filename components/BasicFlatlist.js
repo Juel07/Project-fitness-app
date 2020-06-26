@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, AppRegistry, FlatList, ScrollView } from 'react-native';
-
+// import Swipeout from 'react-native-swipeout'
 import SetsFlatlistData from '../data/SetsFlatlistData'
 
 import { useFonts } from '@use-expo/font';
@@ -9,23 +9,16 @@ import { AppLoading } from 'expo';
 class FlatlistItem extends Component {
     render() {
         return (
-            <View style={{
-                flex: 1,
-                flexDirection: 'column',
-            }}>
-                <View style={{
-                    flex: 1,
-                    flexDirection: 'row',
-                    backgroundColor: 'mediumseagreen'
-                }}>
-
+            <View style={styles.card}>
+                <View style={styles.inner}>
                     <View style={{
                         flex: 1,
                         flexDirection: 'column',
-                        height: 100
+                        justifyContent: 'center',
+                        height: 80,
                     }}>
-                        <Text style={styles.flatListItem}>{this.props.item.name}</Text>
-                        <Text style={styles.flatListItem}>{this.props.item.foodDescription}</Text>
+                        <Text style={styles.numberOfSets}>{this.props.item.name}</Text>
+                        <Text style={styles.numberKGS}>{this.props.item.foodDescription}</Text>
                     </View>
                 </View>
                 <View style={{
@@ -40,18 +33,35 @@ class FlatlistItem extends Component {
 }
 
 const styles = StyleSheet.create({
-    container: {
+    card: {
         flex: 1,
         backgroundColor: '#F8F8F8',
         alignItems: 'center',
         justifyContent: 'center',
+        padding: 10,
+        flexDirection: 'column',
     },
-    flatListItem: {
-        color: 'white',
+    inner: {
+        flex: 1,
+        flexDirection: 'row',
+        backgroundColor: 'white',
+        borderRadius: 10
+    },
+    numberOfSets: {
+        color: 'black',
         fontSize: 16,
-        paddingLeft: 5,
+        marginLeft: 10,
+        paddingLeft: 20,
         borderLeftWidth: 10,
-        borderLeftColor: '#2C1966'
+        borderLeftColor: '#2C1966',
+    },
+    numberKGS: {
+        color: 'black',
+        fontSize: 16,
+        marginLeft: 10,
+        paddingLeft: 20,
+        borderLeftWidth: 10,
+        borderLeftColor: '#2C1966',
     }
 })
 

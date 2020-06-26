@@ -18,25 +18,52 @@
 // });
 
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 
 import BasicFlatlist from '../components/BasicFlatlist'
 
+import { useFonts } from '@use-expo/font';
+import { AppLoading } from 'expo';
 
 const Exercise = () => {
-  return (
-    <View style={styles.container}>
-      <BasicFlatlist />
-    </View>
-  );
-};
+  let [fontsLoaded] = useFonts({
+    'Regular': require('../assets/fonts/Roboto-Regular.ttf'),
+    'Bold': require('../assets/fonts/Roboto-Bold.ttf'),
+    'Medium': require('../assets/fonts/Roboto-Medium.ttf'),
+  });
+
+  // check if fonts are loaded
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  } else {
+    return (
+      <View style={styles.container}>
+        <View style={styles.textWrapper}>
+          <Text style={styles.titleText}>Recommended Sets
+      </Text>
+        </View>
+        <BasicFlatlist />
+      </View>
+    );
+  }
+}
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'column',
-    justifyContent: 'flex-start'
+    justifyContent: 'space-around',
+    backgroundColor: '#F8F8F8'
   },
+  titleText: {
+    fontFamily: 'Medium',
+    fontSize: 18,
+    textTransform: 'uppercase',
+    letterSpacing: 0.5
+  },
+  textWrapper: {
+    padding: 20
+  }
 });
 
 export default Exercise;

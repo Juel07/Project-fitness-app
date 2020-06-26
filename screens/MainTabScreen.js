@@ -86,7 +86,6 @@ const LandingStackScreen = () => (
                 },
                 headerTintColor: '#fff',
                 headerTitleStyle: {
-                fontWeight: 'Regular'
                 },
             headerTitleAlign: 'center',
             gestureEnabled: true, gestureDirection: 'horizontal',
@@ -113,7 +112,6 @@ const SettingsStackScreen = () => (
                 },
                 headerTintColor: '#fff',
                 headerTitleStyle: {
-                fontWeight: 'Regular'
                 },
             headerTitleAlign: 'center',
             headerBackTitleVisible: 'false',
@@ -138,7 +136,6 @@ const AnalyticsStackScreen = () => (
                 },
                 headerTintColor: '#fff',
                 headerTitleStyle: {
-                fontWeight: 'Regular'
                 },
             headerTitleAlign: 'center',
             headerBackTitleVisible: 'false',

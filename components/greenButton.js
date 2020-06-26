@@ -29,13 +29,9 @@ export default function CustomButton({ text, onPress }) {
 
 const styles = StyleSheet.create({
     button: {
-        // margin: 5,
-        // height: 50,
         width: 200,
-        // justifyContent: 'center',
         borderRadius: 30,
         paddingVertical: 10,
-        // paddingHorizontal: 5,
         backgroundColor: '#00EEAA',
         elevation: 5,
         shadowColor: "#dadada",

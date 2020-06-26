@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
   },
 
   box: {
-    Padding: 10,
+    padding: 10,
     margin: 10
   },
 

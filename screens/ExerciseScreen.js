@@ -1,20 +1,42 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+//   addButton: {
+//     position: "absolute",
+//     zIndex: 11,
+//     right: 20,
+//     bottom: 90,
+//     backgroundColor: 'black',
+//     width: 90,
+//     height: 90,
+//     borderRadius: 50,
+//     alignItems: 'center',
+//     justifyContent: 'center',
+//     elevation: 8
+//   },
+//   addButtonText :{
+//     color: '#fff',
+//     fontSize: 24
+//   }
+// });
 
-export default function ExercisePage() {
+import React from 'react';
+import { StyleSheet, View } from 'react-native';
+
+import BasicFlatlist from '../components/BasicFlatlist'
+
+
+const Exercise = () => {
   return (
     <View style={styles.container}>
-      <Text>Bench press</Text>
-      {/* <TouchableOpacity style={styles.relativeCard} onPress={() => navigation.navigate('WorkoutScreen')}></TouchableOpacity> */}
+      <BasicFlatlist />
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    flexDirection: 'column',
+    justifyContent: 'flex-start'
   },
 });
+
+export default Exercise;

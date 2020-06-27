@@ -1,24 +1,5 @@
-//   addButton: {
-//     position: "absolute",
-//     zIndex: 11,
-//     right: 20,
-//     bottom: 90,
-//     backgroundColor: 'black',
-//     width: 90,
-//     height: 90,
-//     borderRadius: 50,
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//     elevation: 8
-//   },
-//   addButtonText :{
-//     color: '#fff',
-//     fontSize: 24
-//   }
-// });
-
 import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
 import BasicFlatlist from '../components/BasicFlatlist'
 
@@ -38,9 +19,6 @@ const Exercise = () => {
   } else {
     return (
       <View style={styles.container}>
-        {/* <View style={styles.textWrapper}>
-          <Text style={styles.titleText}>Recommended Sets</Text>
-        </View> */}
         <BasicFlatlist />
       </View>
     );
@@ -54,15 +32,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     backgroundColor: '#F8F8F8'
   },
-  titleText: {
-    fontFamily: 'Medium',
-    fontSize: 18,
-    textTransform: 'uppercase',
-    letterSpacing: 0.5
-  },
-  textWrapper: {
-    padding: 20
-  }
 });
 
 export default Exercise;

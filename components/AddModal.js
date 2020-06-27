@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import {
-    StyleSheet, Text, View, Image, Alert,
+    Text, Alert,
     Platform, Dimensions,
     TextInput
 } from 'react-native';
 import Modal from 'react-native-modalbox';
-// import Button from 'react-native-button';
 import Button from './greenButton';
 
 import flatListData from '../data/SetsFlatlistData';
@@ -25,7 +24,7 @@ export default class AddModal extends Component {
         this.refs.myModal.open();
     }
     generateKey = (numberOfCharacters) => {
-        return require('random-string')({length: numberOfCharacters});        
+        return require('random-string')({ length: numberOfCharacters });
     }
     render() {
         return (
@@ -37,7 +36,8 @@ export default class AddModal extends Component {
                     borderRadius: Platform.OS === 'ios' ? 30 : 30,
                     shadowRadius: 10,
                     width: screen.width - 80,
-                    height: 280
+                    height: 340,
+                    backgroundColor: '#fff'
                 }}
                 position='center'
                 backdrop={true}
@@ -53,46 +53,49 @@ export default class AddModal extends Component {
                     textTransform: 'uppercase',
                     letterSpacing: 0.6
                 }}>New Set</Text>
-                <TextInput keyboardType='numeric'
+                <TextInput keyboardType='numeric' selectionColor='#2C1966'
                     style={{
                         height: 40,
-                        borderBottomColor: 'black',
+                        borderBottomColor: '#DADADA',
                         marginLeft: 20,
                         marginRight: 20,
-                        marginTop: 20,
+                        marginTop: 15,
                         marginBottom: 10,
-                        borderBottomWidth: 1
-                    }}           
+                        borderBottomWidth: 2,
+                        textAlign: 'center'
+                    }}
                     onChangeText={(text) => this.setState({ newReps: text })}
                     placeholder="Enter number of Reps"
-                    value={this.state.newReps}                 
+                    value={this.state.newReps}
                 />
-                <TextInput keyboardType='numeric'
+                <TextInput keyboardType='numeric' selectionColor='#2C1966'
                     style={{
                         height: 40,
-                        borderBottomColor: 'black',
+                        borderBottomColor: '#DADADA',
                         marginLeft: 20,
                         marginRight: 20,
                         marginTop: 10,
                         marginBottom: 20,
-                        borderBottomWidth: 1
+                        borderBottomWidth: 2,
+                        textAlign: 'center'
                     }}
-                    
+
                     onChangeText={(text) => this.setState({ newWeight: text })}
                     placeholder="Enter the Weight in Kgs"
                     value={this.state.newWeight}
                 />
-                <TextInput keyboardType='numeric'
+                <TextInput keyboardType='numeric' selectionColor='#2C1966'
                     style={{
                         height: 40,
-                        borderBottomColor: 'black',
+                        borderBottomColor: '#DADADA',
                         marginLeft: 20,
                         marginRight: 20,
                         marginTop: 10,
                         marginBottom: 20,
-                        borderBottomWidth: 1
+                        borderBottomWidth: 2,
+                        textAlign: 'center'
                     }}
-                    
+
                     onChangeText={(text) => this.setState({ newRest: text })}
                     placeholder="Enter the resting time in seconds"
                     value={this.state.newRest}
@@ -100,20 +103,20 @@ export default class AddModal extends Component {
                 <Button
                     style={{ fontSize: 18, color: 'white' }} text={'Add this set'}
                     onPress={() => {
-                         if (this.state.newReps.length == 0 || this.state.newWeight.length == 0) {
+                        if (this.state.newReps.length == 0 || this.state.newWeight.length == 0) {
                             alert("You must enter the number of Reps and weight (Kgs) for this set");
                             return;
-                        }       
+                        }
                         const newKey = this.generateKey(24);
                         const newSet = {
                             key: newKey,
                             reps: this.state.newReps,
                             weight: this.state.newWeight,
                             rest: this.state.newRest
-                        };    
-                        flatListData.push(newSet);    
-                        this.props.parentFlatList.refreshFlatList(newKey);                                
-                        this.refs.myModal.close();                                                                       
+                        };
+                        flatListData.push(newSet);
+                        this.props.parentFlatList.refreshFlatList(newKey);
+                        this.refs.myModal.close();
                     }}>
                 </Button>
             </Modal>

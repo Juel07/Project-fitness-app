@@ -38,10 +38,9 @@ const Exercise = () => {
   } else {
     return (
       <View style={styles.container}>
-        <View style={styles.textWrapper}>
-          <Text style={styles.titleText}>Recommended Sets
-      </Text>
-        </View>
+        {/* <View style={styles.textWrapper}>
+          <Text style={styles.titleText}>Recommended Sets</Text>
+        </View> */}
         <BasicFlatlist />
       </View>
     );

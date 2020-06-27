@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, StatusBar} from 'react-native';
 import TouchableScale from 'react-native-touchable-scale';
 import ProgressCircle from 'react-native-progress-circle'
 
@@ -23,6 +23,7 @@ export default function Workout({ navigation }) {
   } else {
     return (
       <View style={styles.container}>
+        <StatusBar backgroundColor='#2C1966' barStyle="light-content" />
         <ScrollView>
           <View style={styles.top}>
             <View style={styles.textContainer}>

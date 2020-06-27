@@ -108,7 +108,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         flexDirection: 'column',
         borderBottomColor: '#F8F8F8',
-        borderBottomWidth: 1
+        borderBottomWidth: 1.5,
+        paddingLeft:10
     },
     inner: {
         flex: 1,
@@ -170,7 +171,7 @@ export default class BasicFlatlist extends Component {
     render() {
 
         return (
-            <View style={{ flex: 1, marginTop: Platform.OS === 'ios' ? 34 : 0 }}>
+            <View style={{ flex: 1, marginTop: Platform.OS === 'ios' ? 0 : 0 }}>
                 <View style={{
                     backgroundColor: '#2C1966',
                     flexDirection: 'row',

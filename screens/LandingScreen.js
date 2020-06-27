@@ -2,8 +2,6 @@ import React from 'react';
 import { StyleSheet, Text, View, ScrollView } from 'react-native';
 import TouchableScale from 'react-native-touchable-scale';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import { ListItem } from 'react-native-elements'
-
 
 export default function LandingScreen({ navigation }) {
   return (
@@ -23,28 +21,6 @@ export default function LandingScreen({ navigation }) {
             <Icon name="chevron-right" style={styles.illustration} size={25} />
           </View>
         </TouchableScale>
-        {/* <ListItem
-          Component={TouchableScale}
-          friction={90} //
-          tension={100} // These props are passed to the parent component (here TouchableScale)
-          activeScale={0.95} //
-          onPress={() => navigation.navigate("Full Body Workout 1")}
-          title="Full Body Workout"
-          titleStyle={{ color: 'black', fontWeight: 'bold' }}
-          subtitleStyle={{ color: 'black', fontWeight: 'normal' }}
-          subtitle="4 Exercises"
-          chevron={{ color: 'black', size: 20 }}
-          style={styles.rect}
-          containerStyle={{
-            borderRadius: 10, shadowColor: "#929292",
-            shadowOffset: {
-              width: 0,
-              height: 0
-            },
-            shadowOpacity: 5,
-            shadowRadius: 4
-          }}
-        /> */}
       </ScrollView>
     </View>
   );

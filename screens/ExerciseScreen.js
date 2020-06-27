@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, StatusBar } from 'react-native';
 
 import BasicFlatlist from '../components/BasicFlatlist'
 
@@ -19,6 +19,7 @@ const Exercise = () => {
   } else {
     return (
       <View style={styles.container}>
+        <StatusBar backgroundColor='#2C1966' barStyle="light-content" />
         <BasicFlatlist />
       </View>
     );

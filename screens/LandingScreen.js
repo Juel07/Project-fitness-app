@@ -1,11 +1,12 @@
 import React from 'react';
-import { StyleSheet, Text, View, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, StatusBar } from 'react-native';
 import TouchableScale from 'react-native-touchable-scale';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 export default function LandingScreen({ navigation }) {
   return (
     <View style={styles.container}>
+      <StatusBar backgroundColor='#2C1966' barStyle="light-content" />
       <ScrollView>
         <TouchableScale
           activeScale={0.95}

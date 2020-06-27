@@ -9,8 +9,8 @@ Each workout, when clicked leads to a screen that displays a list of all the exe
 - iOS users can request my login details needed to view the project on Expo (due to changes to Apple's review guidelines).
 
 # Screenshots (Android)
-<img src="/assets/screenshots/workout-details.png">
-<img src="/assets/screenshots/bench-press.png">
+<img src="/assets/screenshots/workout-details.png" height="600px">
+<img src="/assets/screenshots/bench-press.png" height="600px">
 
 # Tools & Technologies
 - React Native 0.62

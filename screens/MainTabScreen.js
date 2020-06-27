@@ -27,7 +27,6 @@ const MainTabScreen = () => (
             inactiveTintColor: '#dadada',
             showLabel: true
         }}
-        // height={60}
     >
           <Tab.Screen
             name="Workouts"
@@ -70,7 +69,7 @@ const config = {
     config: {
         stiffness: 1000,
         damping: 50,
-        mass: 3,
+        mass: 2,
         overshootClamping: false,
         restDisplacementThreshold: 0.01,
         restSpeedThreshold: 0.01,

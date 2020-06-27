@@ -4,6 +4,7 @@ import Swipeout from 'react-native-swipeout'
 import SetsFlatlistData from '../data/SetsFlatlistData'
 import AddModal from './AddModal'
 import EditModal from './EditModal'
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import flatListData from '../data/SetsFlatlistData';
 
@@ -86,6 +87,7 @@ class FlatlistItem extends Component {
                             <Text style={styles.numberKGS}>{this.props.item.weight}</Text>
                             <Text style={{ padding: 10, fontSize: 18 }}>KGS</Text>
                         </View>
+                        <Icon name="chevron-right" style={{color: '#DADADA', padding: 10}} size={25} />
                     </View>
                     <View style={styles.outer}>
                         <Text style={styles.numberOfSecs}>{this.props.item.rest}s</Text>
@@ -105,6 +107,8 @@ const styles = StyleSheet.create({
         alignItems: 'flex-start',
         justifyContent: 'center',
         flexDirection: 'column',
+        borderBottomColor: '#F8F8F8',
+        borderBottomWidth: 1
     },
     inner: {
         flex: 1,

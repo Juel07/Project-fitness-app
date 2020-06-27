@@ -1,17 +1,13 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, FlatList, Alert, Platform, Image, TouchableHighlight } from 'react-native';
+import { StyleSheet, Text, View, FlatList, Alert, Platform, Image, TouchableHighlight } from 'react-native';
 import Swipeout from 'react-native-swipeout'
 import SetsFlatlistData from '../data/SetsFlatlistData'
 import AddModal from './AddModal'
+import EditModal from './EditModal'
 
-import { useFonts } from '@use-expo/font';
-import { AppLoading } from 'expo';
+import flatListData from '../data/SetsFlatlistData';
 
-import { YellowBox } from 'react-native';
-
-YellowBox.ignoreWarnings([
-    'VirtualizedLists should never be nested',
-])
+console.disableYellowBox = true; // removed when fixed
 
 class FlatlistItem extends Component {
     constructor(props) {
@@ -19,6 +15,13 @@ class FlatlistItem extends Component {
         this.state = {
             activeRowKey: null
         };
+    }
+    refreshFlatlistItem = () => {
+        this.setState((prevState) => {
+            return {
+                numberOfRefresh: prevState.numberOfRefresh + 1
+            };
+        });        
     }
     render() {
         const swipeSettings = {
@@ -33,6 +36,12 @@ class FlatlistItem extends Component {
                 this.setState({ activeRowKey: this.props.item.key }); //REMOVE object from an array
             },
             right: [
+                {
+                    onPress: () => {
+                        this.props.parentFlatList.refs.editModal.showEditModal(flatListData[this.props.index], this);
+                    },
+                    text: 'Edit', type: 'primary'
+                },
                 {
                     backgroundColor: '#F8F8F8',
                     color: 'red',
@@ -54,7 +63,7 @@ class FlatlistItem extends Component {
                             { cancelable: true }
                         );
                     },
-                    text: 'Delete set', type: 'delete'
+                    text: 'Delete', type: 'delete'
                 }
             ],
             rowId: this.props.index,
@@ -78,15 +87,10 @@ class FlatlistItem extends Component {
                             <Text style={{ padding: 10, fontSize: 18 }}>KGS</Text>
                         </View>
                     </View>
-                    {/* <View style={{
-                        height: 10,
-                        backgroundColor: 'blue'
-                    }}> */}
                     <View style={styles.outer}>
-                        <Text style={styles.numberOfSecs}>{this.props.item.restTime}s</Text>
+                        <Text style={styles.numberOfSecs}>{this.props.item.rest}s</Text>
                         <Text style={{ paddingLeft: 2, fontSize: 18, fontWeight: '500', color: '#fff' }}>REST</Text>
                     </View>
-                    {/* </View> */}
                 </View>
 
             </Swipeout>
@@ -97,10 +101,9 @@ class FlatlistItem extends Component {
 const styles = StyleSheet.create({
     card: {
         flex: 1,
-        backgroundColor: '#F8F8F8',
-        alignItems: 'center',
+        backgroundColor: '#fff',
+        alignItems: 'flex-start',
         justifyContent: 'center',
-        // padding: 10,
         flexDirection: 'column',
     },
     inner: {
@@ -112,7 +115,7 @@ const styles = StyleSheet.create({
     numberOfReps: {
         color: 'black',
         fontSize: 36,
-        marginLeft: 10,
+        marginLeft: 5,
         paddingLeft: 20,
         borderLeftWidth: 10,
         borderLeftColor: '#2C1966',
@@ -120,7 +123,6 @@ const styles = StyleSheet.create({
     numberKGS: {
         color: 'black',
         fontSize: 36,
-        // marginLeft: 10,
         paddingLeft: 20,
     },
     outer: {
@@ -159,18 +161,10 @@ export default class BasicFlatlist extends Component {
         this.refs.flatList.scrollToEnd();
     }
     _onPressAdd() {
-        // alert("Add another set")
         this.refs.addModal.showAddModal()
     }
     render() {
-        // let [fontsLoaded] = useFonts({
-        //     'Regular': require('../assets/fonts/Roboto-Regular.ttf'),
-        //     'Bold': require('../assets/fonts/Roboto-Bold.ttf'),
-        //     'Medium': require('../assets/fonts/Roboto-Medium.ttf'),
-        // });
-        // if (!fontsLoaded) {
-        //     return <AppLoading />;
-        // } else {
+
         return (
             <View style={{ flex: 1, marginTop: Platform.OS === 'ios' ? 34 : 0 }}>
                 <View style={{
@@ -196,18 +190,19 @@ export default class BasicFlatlist extends Component {
                     </TouchableHighlight>
                 </View>
                 <FlatList
-                ref={"flatList"}
+                    ref={"flatList"}
                     extraData={this.state.activeRowKey}
                     data={SetsFlatlistData}
                     renderItem={({ item, index }) => {
                         return (
-                            <FlatlistItem item={item} index={index}>
+                            <FlatlistItem item={item} index={index} parentFlatList={this}>
 
                             </FlatlistItem>);
                     }}
                 >
                 </FlatList>
                 <AddModal ref={'addModal'} parentFlatList={this}></AddModal>
+                <EditModal ref={'editModal'} parentFlatList={this}></EditModal>
             </View>
         );
     }

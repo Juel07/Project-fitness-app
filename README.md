@@ -21,4 +21,8 @@ Each workout, when clicked leads to a screen that displays a list of all the exe
 ```
 $ npm install -g expo-cli
 ```
-
+## To run this project, install it locally using Expo
+```
+$ cd patient-progress-app
+$ expo start 
+```

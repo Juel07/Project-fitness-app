@@ -1,45 +1,32 @@
-import React, { useState } from 'react';
-import { StyleSheet, Text, View, FlatList } from 'react-native';
+import React from 'react';
+import { StyleSheet, Text, View } from 'react-native';
 
-export default function Landing() {
-  const [workout, setWorkout] = useState([
-    { name: 'Work 1', exercise: '4', id: '1' },
-    { name: 'Work 2', exercise: '3', id: '2' },
-    { name: 'Work 3', id: '3' },
-    { name: 'Work 4', id: '4' }
-  ])
+import { useFonts } from '@use-expo/font';
+import { AppLoading } from 'expo';
 
+export default function SettingsPage() {
+  let [fontsLoaded] = useFonts({
+    'Regular': require('../assets/fonts/Roboto-Regular.ttf'),
+    'Bold': require('../assets/fonts/Roboto-Bold.ttf'),
+    'Medium': require('../assets/fonts/Roboto-Medium.ttf'),
+  });
 
-  return (
-    <View style={styles.container}>
-      <FlatList
-        keyExtractor={(item) => item.id}
-        data={workout}
-        renderItem={({ item }) => (
-          <Text style={styles.mainText}>{item.name}</Text>
-        )}
-      />
-    </View>
-  )
+  // check if fonts are loaded
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  } else {
+    return (
+      <View style={styles.container}>
+          <Text style={styles.topText}>Settings</Text>
+      </View>
+    );
+  }
 }
-// export default function SettingsPage() {
-//   return (
-//     <View style={styles.container}>
-//       <Text>Settings</Text>
-//     </View>
-//   );
-// }
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#F8F8F8',
     alignItems: 'center',
     justifyContent: 'center',
   },
-  mainText: {
-    padding: 10,
-    marginVertical: 10,
-    backgroundColor: 'salmon'
-  }
-});
+})

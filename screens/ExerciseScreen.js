@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'column',
-    justifyContent: 'space-around',
+    // justifyContent: 'space-around',
     backgroundColor: '#F8F8F8'
   },
 });

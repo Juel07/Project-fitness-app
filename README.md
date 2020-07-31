@@ -23,6 +23,6 @@ $ npm install -g expo-cli
 ```
 ## To run this project, install it locally using Expo
 ```
-$ cd patient-progress-app
+$ cd fitness-app
 $ expo start 
 ```

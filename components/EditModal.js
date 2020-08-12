@@ -14,7 +14,7 @@ var screen = Dimensions.get('window');
 export default class EditModal extends Component {
     constructor(props) {
         super(props);
-        this.state = {
+        this.state = { //defining the states
             newReps: '',
             newWeight: '',
             newRest: ''
@@ -30,7 +30,7 @@ export default class EditModal extends Component {
         })
         this.refs.myModal.open();
     }
-    generateKey = (numberOfCharacters) => {
+    generateKey = (numberOfCharacters) => { //generate function, with package called random-string
         return require('random-string')({ length: numberOfCharacters });
     }
     render() {
@@ -123,7 +123,7 @@ export default class EditModal extends Component {
                         flatListData[foundIndex].weight = this.state.newWeight;
                         flatListData[foundIndex].rest = this.state.newRest;
                         //refresh flatlist item
-                        this.state.flatlistItem.refreshFlatlistItem();
+                        this.state.flatlistItem.refreshFlatlistItem(); //call the refreshFlatlist function here
                         this.refs.myModal.close();
                     }}>
                 </Button>

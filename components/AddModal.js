@@ -107,7 +107,7 @@ export default class AddModal extends Component {
                             alert("You must enter the number of Reps and weight (Kgs) for this set");
                             return;
                         }
-                        const newKey = this.generateKey(24);
+                        const newKey = this.generateKey(24); //generate key with 24 characters
                         const newSet = {
                             key: newKey,
                             reps: this.state.newReps,
@@ -115,8 +115,8 @@ export default class AddModal extends Component {
                             rest: this.state.newRest
                         };
                         flatListData.push(newSet);
-                        this.props.parentFlatList.refreshFlatList(newKey);
-                        this.refs.myModal.close();
+                        this.props.parentFlatList.refreshFlatList(newKey); //refresh the flatlist after adding the data, by calling the parent flatlist
+                        this.refs.myModal.close(); //closing the modal - use the reference name of the modal component. call the function close()
                     }}>
                 </Button>
             </Modal>

@@ -11,16 +11,16 @@ import flatListData from '../data/SetsFlatlistData';
 console.disableYellowBox = true; // removed when fixed
 
 class FlatlistItem extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            activeRowKey: null
+    constructor(props) { // constructor method to initialise an objects state in a class
+        super(props); //when using constructor, you have to use super(props) method before any other statement, or this.state will be undefined
+        this.state = { // define the state inside the constructor 
+            activeRowKey: null //you can save your key inside this
         };
     }
-    refreshFlatlistItem = () => {
+    refreshFlatlistItem = () => { //automatically rerender after the state is changed.it will change the state of the flatlist item and after it has changed .
         this.setState((prevState) => {
             return {
-                numberOfRefresh: prevState.numberOfRefresh + 1
+                numberOfRefresh: prevState.numberOfRefresh + 1 //variable starts from 0, increase the no. of refresh when you update and the state is changed
             };
         });        
     }
@@ -28,22 +28,22 @@ class FlatlistItem extends Component {
         const swipeSettings = {
 
             autoClose: true,
-            onClose: (secId, rowId, direction) => {
+            onClose: (secId, rowId, direction) => { //moving from L to R
                 if (this.state.activeRowKey != null) {
                     this.setState({ activeRowKey: null });
                 }
             },
-            onOpen: (secId, rowId, direction) => {
+            onOpen: (secId, rowId, direction) => { //when you move from R to L, it refers to onOPen property 
                 this.setState({ activeRowKey: this.props.item.key }); //REMOVE object from an array
             },
-            right: [
-                {
+            right: [ //when you want to add task 
+                { //edit object
                     onPress: () => {
-                        this.props.parentFlatList.refs.editModal.showEditModal(flatListData[this.props.index], this);
+                        this.props.parentFlatList.refs.editModal.showEditModal(flatListData[this.props.index], this);  //editing the food object. this: flatlistItem's object
                     },
                     text: 'Edit', type: 'primary'
                 },
-                {
+                { //delete object
                     backgroundColor: '#F8F8F8',
                     color: 'red',
                     onPress: () => {
@@ -67,7 +67,7 @@ class FlatlistItem extends Component {
                     text: 'Delete', type: 'delete'
                 }
             ],
-            rowId: this.props.index,
+            rowId: this.props.index, //flat lists also have section ids and the default is 1 
             sectionId: 1
         };
         return (
@@ -155,15 +155,15 @@ export default class BasicFlatlist extends Component {
         this.state = ({
             deletedRowKey: null, //initialises a state
         });
-        this._onPressAdd = this._onPressAdd.bind(this) //binds "this" to BasicFlatlist's object
-    }
-    refreshFlatList = (deletedKey) => {
+        this._onPressAdd = this._onPressAdd.bind(this) //binds "this" to BasicFlatlist's object. it attaches object to the function. everytime the function is called it refers to the bound object
+    } //for our methods to have access to this.state and this.props we need to bind the react component 'this' context to those methods.
+    refreshFlatList = (deletedKey) => { //function defined here, could change deleted key to active key. 
         this.setState((prevState) => {
             return {
                 deletedRowKey: deletedKey
             };
         });
-        this.refs.flatList.scrollToEnd();
+        this.refs.flatList.scrollToEnd(); //scroll the list to the end when new item added
     }
     _onPressAdd() {
         this.refs.addModal.showAddModal()
@@ -206,8 +206,10 @@ export default class BasicFlatlist extends Component {
                     }}
                 >
                 </FlatList>
-                <AddModal ref={'addModal'} parentFlatList={this}></AddModal>
-                <EditModal ref={'editModal'} parentFlatList={this}></EditModal>
+                <AddModal ref={'addModal'} parentFlatList={this}></AddModal> 
+                //parent flatlist object
+                <EditModal ref={'editModal'} parentFlatList={this}></EditModal>  
+                //'edit modal' is a reference name
             </View>
         );
     }
